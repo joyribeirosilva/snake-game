@@ -24,6 +24,8 @@ canvas {
     height: 80vw; 
     max-width: 300px; 
     max-height: 300px; 
-    overflow: hidden;
+  }
+  html, body {
+    overflow: hidden; /* Oculta a barra de rolagem apenas em dispositivos móveis */
   }
 }
