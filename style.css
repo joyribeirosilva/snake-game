@@ -16,3 +16,13 @@ canvas {
   border: 1px solid #000;
   background-color:rgb(8, 247, 127);
 } 
+
+
+@media only screen and (max-width: 600px) {
+  canvas {
+    width: 80vw; /* Definindo largura relativa para tela de dispositivos móveis */
+    height: 80vw; /* Definindo altura relativa para tela de dispositivos móveis */
+    max-width: 300px; /* Limitando largura máxima */
+    max-height: 300px; /* Limitando altura máxima */
+  }
+}

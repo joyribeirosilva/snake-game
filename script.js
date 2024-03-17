@@ -82,3 +82,48 @@ document.addEventListener('keydown', (event) => {
         dy = 0;
     }
 });
+
+// Adiciona controle por toque
+canvas.addEventListener('touchstart', handleTouchStart, false);
+canvas.addEventListener('touchmove', handleTouchMove, false);
+
+let touchStartX = 0;
+let touchStartY = 0;
+
+function handleTouchStart(event) {
+    touchStartX = event.touches[0].clientX;
+    touchStartY = event.touches[0].clientY;
+}
+
+function handleTouchMove(event) {
+    if (!touchStartX || !touchStartY) {
+        return;
+    }
+
+    const touchEndX = event.touches[0].clientX;
+    const touchEndY = event.touches[0].clientY;
+
+    const diffX = touchStartX - touchEndX;
+    const diffY = touchStartY - touchEndY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        if (diffX > 0 && dx !== box) {
+            dx = -box;
+            dy = 0;
+        } else if (diffX < 0 && dx !== -box) {
+            dx = box;
+            dy = 0;
+        }
+    } else {
+        if (diffY > 0 && dy !== box) {
+            dx = 0;
+            dy = -box;
+        } else if (diffY < 0 && dy !== -box) {
+            dx = 0;
+            dy = box;
+        }
+    }
+
+    touchStartX = 0;
+    touchStartY = 0;
+}
